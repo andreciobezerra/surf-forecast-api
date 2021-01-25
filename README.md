@@ -1,2 +1,2 @@
 # surf-forecast-api
-An api get along Dev Lab tutorial
+An api made along Dev Lab tutorial
