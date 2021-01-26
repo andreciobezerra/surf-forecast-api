@@ -1,0 +1,25 @@
+{
+  "name": "surf-forecast-api",
+  "description": "An api made along Dev Lab tutorial",
+  "version": "1.0.0",
+  "author": "Andrécio Bezerra <andreciobezerra@gmail.com>",
+  "license": "MIT",
+  "main": "./dist/src/index.js",
+  "keywords": [
+    "nodejs",
+    "typescript"
+  ],
+  "scripts": {
+    "start": "yarn build && node dist/src/index.js",
+    "build": "tsc",
+    "test": ""
+  },
+  "devDependencies": {
+    "@types/module-alias": "^2.0.0",
+    "@types/node": "^14.14.22",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "module-alias": "^2.2.2"
+  }
+}
