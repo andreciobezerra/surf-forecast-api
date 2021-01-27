@@ -17,14 +17,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "yarn eslint ./src ./test --ext .ts --fix",
       "post-commit": "git push",
       "pre-push": "echo Pushing modifications..."
     }
   },
   "lint-staged": {
     "*.ts": [
-      "eslint ./src ./test --ext .ts --fix"
+      "npx eslint ./src ./test --ext .ts --fix"
     ]
   },
   "devDependencies": {
