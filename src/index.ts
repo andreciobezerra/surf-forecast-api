@@ -1,1 +1,1 @@
-console.log("hell awaits")
+console.log("hell awaits");
