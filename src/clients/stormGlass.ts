@@ -1,7 +1,7 @@
-import { AxiosStatic } from "axios";
 import { ForecastPoint, ForecastResponse, StormGlassPoint } from "@src/interfaces/stormGlass";
 import { InternalError } from "@src/util/errors/internal-error";
 import config, { IConfig } from "config";
+import * as HTTPUtil from "@src/util/request";
 
 const stormGlassResourceConfig: IConfig = config.get("App.resources.StormGlass");
 
@@ -10,8 +10,11 @@ export class StormGlass {
     "swellDirection,swellHeight,swellPeriod,waveDirection,waveHeight,windDirection,windSpeed";
 
   readonly stormGlassAPISource = "noaa";
+  protected request: HTTPUtil.Request;
 
-  constructor(protected request: AxiosStatic) {}
+  constructor(request = new HTTPUtil.Request()) {
+    this.request = request;
+  }
 
   private isValidPoint(point: Partial<StormGlassPoint>): boolean {
     return !!(
@@ -56,7 +59,7 @@ export class StormGlass {
         }
       )
       .catch((err) => {
-        throw err.response && err.response.status
+        throw HTTPUtil.Request.isRequestError(err)
           ? new StormGlassResponseError(
               `Error: ${JSON.stringify(err.response.data)} Code: ${err.response.status}`
             )
